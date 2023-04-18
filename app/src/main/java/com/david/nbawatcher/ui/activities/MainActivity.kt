@@ -1,4 +1,4 @@
-package com.david.nbawatcher
+package com.david.nbawatcher.ui.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
