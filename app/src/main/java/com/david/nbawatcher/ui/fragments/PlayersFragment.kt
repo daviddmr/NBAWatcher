@@ -10,7 +10,9 @@ import com.david.nbawatcher.adapters.PlayersAdapter
 import com.david.nbawatcher.databinding.FragmentPlayersBinding
 import com.david.nbawatcher.domain.models.Player
 import com.david.nbawatcher.viewmodels.PlayersViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class PlayersFragment : Fragment() {
 
     companion object {

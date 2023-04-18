@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.david.nbawatcher.R
 import com.david.nbawatcher.databinding.ActivityMainBinding
 import com.david.nbawatcher.ui.fragments.PlayersFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding

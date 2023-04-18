@@ -2,8 +2,9 @@ package com.david.nbawatcher.data.mappers
 
 import com.david.nbawatcher.data.network.models.NWPlayer
 import com.david.nbawatcher.domain.models.Player
+import javax.inject.Inject
 
-class PlayerMapper(
+class PlayerMapper @Inject constructor(
     private val teamMapper: TeamMapper
 ) : Function1<List<NWPlayer>?, List<Player>> {
     override fun invoke(nwPlayerList: List<NWPlayer>?): List<Player> {

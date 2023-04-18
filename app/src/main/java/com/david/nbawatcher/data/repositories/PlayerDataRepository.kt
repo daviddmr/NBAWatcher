@@ -6,8 +6,8 @@ import com.david.nbawatcher.domain.models.Player
 import com.david.nbawatcher.domain.repositories.PlayerRepository
 
 class PlayerDataRepository(
-    private val api: Api,
-    private val mapper: PlayerMapper
+    private val mapper: PlayerMapper,
+    private val api: Api
 ) : PlayerRepository {
 
     override suspend fun fetchPlayers(): List<Player> {
