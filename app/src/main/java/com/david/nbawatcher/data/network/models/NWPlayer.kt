@@ -26,4 +26,9 @@ data class NWPlayer(
 
     @SerializedName("weight_pounds")
     val weightPounds: String?
-): NWData()
+)
+
+class NWPlayerListResponse(
+    @SerializedName("data")
+    val data: List<NWPlayer>?
+)
