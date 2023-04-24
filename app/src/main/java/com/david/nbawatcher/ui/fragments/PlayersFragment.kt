@@ -41,7 +41,7 @@ class PlayersFragment : Fragment() {
         }
 
         binding.fragmentPlayersBtn.setOnClickListener {
-            viewModel.fetchAllPlayers()
+            viewModel.getPlayers()
         }
     }
 

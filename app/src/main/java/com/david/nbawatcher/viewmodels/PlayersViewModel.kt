@@ -23,7 +23,7 @@ class PlayersViewModel @Inject constructor(
     val playerList: LiveData<List<Player>>
         get() = _playersList
 
-    fun fetchAllPlayers() {
+    fun getPlayers() {
         viewModelScope.launch(exceptionHandler()) {
             val result = playerUseCase.fetchPlayers()
             _playersList.value = result
