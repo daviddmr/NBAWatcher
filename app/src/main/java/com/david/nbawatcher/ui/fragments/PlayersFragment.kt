@@ -43,6 +43,10 @@ class PlayersFragment : Fragment() {
         binding.fragmentPlayersBtn.setOnClickListener {
             viewModel.getPlayers()
         }
+
+        binding.fragmentPlayersRxSingleBtn.setOnClickListener {
+            viewModel.getPlayersRxSingle()
+        }
     }
 
     private fun setAdapter(players: List<Player>) {

@@ -9,6 +9,9 @@ import com.david.nbawatcher.domain.models.Player
 import com.david.nbawatcher.domain.usecases.PlayerUseCase
 import com.david.nbawatcher.ui.fragments.PlayersFragment
 import dagger.hilt.android.lifecycle.HiltViewModel
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -19,6 +22,7 @@ class PlayersViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _playersList = MutableLiveData<List<Player>>()
+    private val disposable = CompositeDisposable()
 
     val playerList: LiveData<List<Player>>
         get() = _playersList
@@ -31,6 +35,28 @@ class PlayersViewModel @Inject constructor(
     }
 
     private fun exceptionHandler() = CoroutineExceptionHandler { coroutineContext, throwable ->
+        handleError(throwable)
+    }
+
+    private fun handleError(throwable: Throwable) {
         Log.d(PlayersFragment.TAG, "onError: $throwable")
+    }
+
+    fun getPlayersRxSingle() {
+        disposable.add(
+            playerUseCase.fetchPlayersRxSingle()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    _playersList.value = it
+                }, {
+                    handleError(it)
+                })
+        )
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        disposable.clear()
     }
 }
